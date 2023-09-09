@@ -1,3 +1,10 @@
+import requests
+
+
+def expand_shortened_url(short_url):
+    response = requests.head(short_url, allow_redirects=True)
+    return response.url
+    
 def has_asin(url):
     return "dp/" in url or "gp/product" in url
 
@@ -30,3 +37,4 @@ else:
     new_link = full_url + f'&tag={affiliate_id}'
 
 print(f"The affiliate link is: {new_link}")
+
